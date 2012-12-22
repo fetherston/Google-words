@@ -5,34 +5,54 @@ $(function() {
 	var iterationLimit = 5; // only iterate this many deep
 	var pause = 2500;
 	var doneStrings = [];
+	var wordObj = {};
 	
 	$('#question-list li a').click(function(event) {
 		event.preventDefault();
-		var query = $(this).text();
+		var query = $(this).text().toLowerCase();
+		// reset some stuff
 		counter = 1;
 		$('#output').empty();
 		doneStrings = [];
+		wordObj = new Object;
+
+		//start the root of the word obj
+		wordObj[$.trim(query)] = {};
 		getData(query);
 	});
 	
-	var startTree = function(wordArray) {
+	var startTree = function(phraseArray) {
 
-		console.log(wordArray);
+		console.log(phraseArray);
 		counter++;
 		
-		$.each(wordArray, function(i, val) {
-			var nextString = returnNwords(val, counter);
-			console.log('next: ' +  nextString);
+		// iterate over each phrase
+		$.each(phraseArray, function(i, val) {
+			var nextString = firstNwords(val, counter);
+			var stringArr = val.split(' ');
+
+			// start with root word
+			var previous = wordObj[stringArr[0]];
 			
-			console.log(doneStrings);
+			//iterate over each word in the sentence and create new objects as needed
+			$.each(stringArr.splice(1, stringArr.length), function(i, value) {
+				// if the object doesn't exist already, create one
+				if (!previous[value]) {
+					previous[value] = {};
+				}
+				previous = previous[value];
+			});
+
+			/*
+
 			// don't append if it's already been done 
 			if ($.inArray(val, doneStrings) === -1) {
-				$('#output').append($('<li>').html(val));
+			//	$('#output').append($('<li>').html(val));
 			}
 			
 			// keep track of already quierred phrases
 			doneStrings.push(val);
-			
+			*/
 			if (counter <= iterationLimit) {
 				setTimeout(function() {
 					console.log('getting: ' + nextString);
@@ -41,6 +61,9 @@ $(function() {
 				}, pause += 2500);
 			}
 		});
+
+		var newObj = jQuery.extend(true, {}, wordObj);
+		console.log(newObj);
 	};
 	
 	var getData = function(string) {
@@ -76,8 +99,14 @@ $(function() {
 	};
 	
 	// returns first n words in a string
-	var returnNwords = function(string, n) {
+	var firstNwords = function(string, n) {
 		var words = string.split(" ");
 	    return words.slice(0, n).join(' ');
+	};
+
+	// returns returns the nth word in a string
+	var nWord = function(string, n) {
+		var words = string.split(" ");
+	    return words[n - 1];
 	};
 });
