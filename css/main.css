@@ -93,11 +93,71 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+body{
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+}
 
+.wrapper{
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 
+#question-list{
+    position: absolute;
+    top: 0;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    z-index: 9;
+    font-size: 10px;
+}
 
+    #question-list li{
+        display: inline-block;
+        margin: 0 10px;
+    }
 
+    #question-list li a{
+        color: #fff;
+    }
 
+#chart{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #666;
+}
+
+.node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    .node {
+        font: 10px sans-serif;
+        color: #fff;
+        
+    }
+
+    .link {
+        fill: none;
+        stroke: #666;
+        stroke-width: 1px;
+    }
+
+.node text{
+    fill: #fff;
+}
 
 
 

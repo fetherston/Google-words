@@ -20,28 +20,32 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-
-        <ul id="question-list">
-        	<li><a href="#">Who&nbsp;</a></li>
-        	<li><a href="#">What&nbsp;</a></li>
-        	<li><a href="#">Where&nbsp;</a></li>
-        	<li><a href="#">Why&nbsp;</a></li>
-        	<li><a href="#">How&nbsp;</a></li>
-        </ul>
-        
-        <ul id="output">
-        </ul>
+        <div class="wrapper">
+            <ul id="question-list">
+            	<li><a href="#">Who&nbsp;</a></li>
+            	<li><a href="#">What&nbsp;</a></li>
+            	<li><a href="#">Where&nbsp;</a></li>
+                <li><a href="#">When&nbsp;</a></li>
+            	<li><a href="#">Why&nbsp;</a></li>
+            	<li><a href="#">How&nbsp;</a></li>
+            </ul>
+            <div id="chart"></div>
+        </div>
 
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="js/word.js"></script>
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!--
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+        -->
     </body>
 </html>
